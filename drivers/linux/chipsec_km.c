@@ -258,7 +258,7 @@ typedef SMI_CONTEXT SMI_CTX, *PSMI_CTX;
     uint16_t *address // rdi
    );
 
-uint32_t
+static uint32_t
 ReadPCICfg(
   uint8_t bus,
   uint8_t dev,
@@ -276,7 +276,7 @@ ReadPCICfg(
   return result;
 }
 
-void
+static void
 WritePCICfg(
   uint8_t bus,
   uint8_t dev,
@@ -293,7 +293,7 @@ WritePCICfg(
   else if( 4 == len ) WritePCIDword( pci_addr, cfg_data_port, val );
 }
 
-void
+static void
 WriteIOPort(
   uint32_t value,
   uint16_t io_port,
@@ -305,7 +305,7 @@ WriteIOPort(
   else if( 4 == len ) WritePortDword( value, io_port );
 }
 
-uint32_t
+static uint32_t
 ReadIOPort(
   uint16_t io_port,
   uint8_t len // 1, 2, 4 bytes
@@ -718,7 +718,7 @@ static loff_t memory_lseek(struct file * file, loff_t offset, int orig)
 }
 
 #ifdef EFI_NOT_READY
-void print_stat(efi_status_t stat)
+static void print_stat(efi_status_t stat)
 {
     switch (stat) {
         case EFI_SUCCESS:
